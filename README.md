@@ -4,9 +4,6 @@ An interactive web-based toolkit designed for learning and practicing cybersecur
 
 This project was created as part of a scientific research paper during my studies at the Academy of the Ministry of Internal Affairs of the Republic of Belarus.
 
-## Live Demo
-**[GitHub Pages](https://a-a-borodin.github.io/english-test/)**
-
 ## Preview
 <p align="center">
   <img src="assets/media/dashboard.png" width="48%" alt="Dashboard Preview" />
