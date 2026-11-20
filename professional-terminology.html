@@ -3,23 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cybersecurity: Crimes & Methods</title>
+    <title>Professional Terminology - Combating Cybercrime</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* =========================================
-           COMPACT FLUID VARIABLES (CLAMP)
-           ========================================= */
         :root {
-            /* Colors */
             --bg-dark: #0f172a;
             --bg-gradient: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 100%);
             --panel-bg: rgba(30, 41, 59, 0.85);
             --panel-border: #334155;
-            
+
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            
+
             --accent-blue: #38bdf8;
             --accent-blue-hover: #0284c7;
             --accent-green: #34d399;
@@ -27,8 +23,8 @@
             --accent-red: #f87171;
             --accent-purple: #818cf8;
             --accent-purple-hover: #4f46e5;
+            --accent-amber: #fbbf24;
 
-            /* Compact Typography */
             --fs-h1: clamp(1.25rem, 3vw + 0.5rem, 2rem);
             --fs-h2: clamp(1.1rem, 2vw + 0.5rem, 1.35rem);
             --fs-term-en: clamp(1.25rem, 3vw + 0.5rem, 1.75rem);
@@ -38,21 +34,16 @@
             --fs-btn: clamp(0.85rem, 1vw + 0.5rem, 0.95rem);
             --fs-small: clamp(0.75rem, 1vw + 0.25rem, 0.85rem);
 
-            /* Compact Spacing */
             --space-xs: clamp(0.25rem, 0.5vw, 0.5rem);
             --space-sm: clamp(0.5rem, 1vw, 0.75rem);
             --space-md: clamp(0.75rem, 1.5vw, 1.25rem);
             --space-lg: clamp(1rem, 2vw, 1.5rem);
             --space-xl: clamp(1.5rem, 3vw, 2rem);
 
-            /* Layout */
-            --container-width: clamp(300px, 90vw, 900px);
+            --container-width: clamp(300px, 92vw, 940px);
             --border-radius: clamp(8px, 1vw, 12px);
         }
 
-        /* =========================================
-           GLOBAL STYLES
-           ========================================= */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -69,7 +60,7 @@
             flex-direction: column;
             align-items: center;
             padding: var(--space-lg) var(--space-sm);
-            line-height: 1.4;
+            line-height: 1.45;
         }
 
         button {
@@ -81,19 +72,14 @@
         }
 
         button:disabled {
-            opacity: 0.5;
+            opacity: 0.55;
             cursor: not-allowed;
             transform: none !important;
             box-shadow: none !important;
         }
 
-        .hidden {
-            display: none !important;
-        }
+        .hidden { display: none !important; }
 
-        /* =========================================
-           COMPONENTS
-           ========================================= */
         header {
             text-align: center;
             margin-bottom: var(--space-lg);
@@ -126,7 +112,6 @@
             animation: fadeIn 0.3s ease-out;
         }
 
-        /* Menu Buttons */
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
@@ -147,18 +132,9 @@
             gap: var(--space-sm);
         }
 
-        .menu-btn i {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-        }
-
-        .menu-btn h3 {
-            font-size: var(--fs-h2);
-        }
-
-        .menu-btn p {
-            font-size: var(--fs-small);
-            color: var(--text-muted);
-        }
+        .menu-btn i { font-size: clamp(1.5rem, 3vw, 2rem); }
+        .menu-btn h3 { font-size: var(--fs-h2); }
+        .menu-btn p { font-size: var(--fs-small); color: var(--text-muted); }
 
         .menu-btn.term-btn:hover {
             border-color: var(--accent-blue);
@@ -168,22 +144,23 @@
         }
         .menu-btn.term-btn i { color: var(--accent-blue); }
 
-        .menu-btn.quiz-btn:hover {
+        .menu-btn.match-btn:hover {
             border-color: var(--accent-green);
             background: rgba(52, 211, 153, 0.1);
             transform: translateY(-3px);
             box-shadow: 0 6px 15px rgba(52, 211, 153, 0.15);
         }
-        .menu-btn.quiz-btn i { color: var(--accent-green); }
+        .menu-btn.match-btn i { color: var(--accent-green); }
 
-        /* Top Bar (Progress & Home) */
         .top-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: var(--space-sm);
             border-bottom: 1px solid var(--panel-border);
             padding-bottom: var(--space-sm);
             margin-bottom: var(--space-md);
+            flex-wrap: wrap;
         }
 
         .top-bar h2 {
@@ -196,7 +173,8 @@
         .top-bar-right {
             display: flex;
             align-items: center;
-            gap: var(--space-md);
+            gap: var(--space-sm);
+            flex-wrap: wrap;
         }
 
         .progress-badge {
@@ -207,6 +185,7 @@
             font-family: monospace;
             font-size: var(--fs-small);
             color: var(--text-muted);
+            white-space: nowrap;
         }
 
         .home-link {
@@ -218,7 +197,6 @@
         }
         .home-link:hover { color: var(--text-main); }
 
-        /* Terminology Module */
         .term-content {
             display: flex;
             flex-direction: column;
@@ -233,6 +211,11 @@
             color: var(--accent-blue);
             font-weight: 800;
             margin-bottom: var(--space-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
         }
 
         .term-def {
@@ -241,6 +224,20 @@
             max-width: 95%;
             margin-bottom: var(--space-lg);
         }
+
+        .speak-btn {
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--accent-blue);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        .speak-btn:hover { background: rgba(56, 189, 248, 0.25); transform: scale(1.06); }
 
         .reveal-btn {
             background: var(--accent-purple);
@@ -251,10 +248,7 @@
             border-radius: var(--border-radius);
             box-shadow: 0 4px 10px rgba(129, 140, 248, 0.3);
         }
-        .reveal-btn:hover {
-            background: var(--accent-purple-hover);
-            transform: scale(1.02);
-        }
+        .reveal-btn:hover { background: var(--accent-purple-hover); transform: scale(1.02); }
 
         .translation-box {
             background: rgba(15, 23, 42, 0.8);
@@ -301,9 +295,8 @@
         }
         .nav-btn:hover:not(:disabled) { background: rgba(51, 65, 85, 1); }
         .nav-btn.primary { background: var(--accent-blue); color: #000; font-weight: bold; }
-        .nav-btn.primary:hover:not(:disabled) { background: var(--accent-blue-hover); color: #fff;}
+        .nav-btn.primary:hover:not(:disabled) { background: var(--accent-blue-hover); color: #fff; }
 
-        /* Quiz Module */
         .quiz-question-box {
             background: rgba(15, 23, 42, 0.5);
             border: 1px solid var(--panel-border);
@@ -344,31 +337,18 @@
             text-align: left;
             font-weight: 500;
         }
-
         .option-btn:hover:not(:disabled) {
             border-color: var(--accent-blue);
             transform: translateX(3px);
             box-shadow: -3px 0 0 var(--accent-blue);
         }
+        .option-btn.correct { background: var(--accent-green-hover); border-color: var(--accent-green); color: white; }
+        .option-btn.wrong { background: var(--accent-red); border-color: #dc2626; color: white; }
 
-        .option-btn.correct {
-            background: var(--accent-green-hover);
-            border-color: var(--accent-green);
-            color: white;
-        }
+        .timer-badge { color: var(--accent-amber); border-color: rgba(251, 191, 36, 0.4); }
+        .timer-badge.danger { color: var(--accent-red); border-color: rgba(248, 113, 113, 0.5); animation: pulse 1s infinite; }
 
-        .option-btn.wrong {
-            background: var(--accent-red);
-            border-color: #dc2626;
-            color: white;
-        }
-
-        /* Results Screen */
-        .results-content {
-            text-align: center;
-            padding: var(--space-md) 0;
-        }
-
+        .results-content { text-align: center; padding: var(--space-md) 0; }
         .results-icon {
             font-size: clamp(3rem, 6vw, 4rem);
             color: #facc15;
@@ -384,55 +364,42 @@
             padding: var(--space-sm) var(--space-lg);
             margin: var(--space-sm) 0;
         }
+        .score-number { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 900; color: var(--accent-blue); line-height: 1; }
 
-        .score-number {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 900;
-            color: var(--accent-blue);
-            line-height: 1;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
     </style>
 </head>
 <body>
 
     <header>
-        <h1><i class="fa-solid fa-shield-halved"></i> Cybersecurity Essentials</h1>
-        <p class="subtitle">Cybercrimes and Cyber Methods</p>
+        <h1><i class="fa-solid fa-shield-halved"></i> Combating Cybercrime</h1>
+        <p class="subtitle">Module 2: Professional Terminology</p>
     </header>
 
     <!-- MAIN MENU -->
     <main id="main-menu" class="glass-panel">
-        <h2 style="font-size: var(--fs-h2); text-align: center; margin-bottom: var(--space-xs);">Select Lesson Module:</h2>
+        <h2 style="font-size: var(--fs-h2); text-align: center; margin-bottom: var(--space-xs);">Select Training Mode:</h2>
         <div class="menu-grid">
             <button onclick="startTerminology()" class="menu-btn term-btn">
                 <i class="fa-solid fa-book-open"></i>
-                <h3>1. Terminology</h3>
-                <p>Read definitions, guess the translation, and reveal the answer.</p>
+                <h3>1. Types of Cybercrimes</h3>
+                <p>Study 16 cybercrime terms: English definition, Russian equivalent, and British pronunciation.</p>
             </button>
-            
-            <button onclick="startQuiz()" class="menu-btn quiz-btn">
-                <i class="fa-solid fa-gamepad"></i>
-                <h3>2. Cyber Cases Quiz</h3>
-                <p>Match 20 short case descriptions with the correct cybercrime.</p>
+
+            <button onclick="startMatching()" class="menu-btn match-btn">
+                <i class="fa-solid fa-stopwatch"></i>
+                <h3>2. Term &amp; Definition Match</h3>
+                <p>60 seconds. Read the definition and choose the correct term. One point for every correct answer.</p>
             </button>
         </div>
     </main>
 
-    <!-- MODULE 1: TERMINOLOGY REVEAL -->
+    <!-- MODE 1: TERMINOLOGY STUDY -->
     <main id="term-container" class="glass-panel hidden">
         <div class="top-bar">
-            <h2 style="color: var(--accent-blue);"><i class="fa-solid fa-graduation-cap"></i> Terminology Study</h2>
+            <h2 style="color: var(--accent-blue);"><i class="fa-solid fa-graduation-cap"></i> Types of Cybercrimes</h2>
             <div class="top-bar-right">
                 <span id="term-progress" class="progress-badge">1/16</span>
                 <button onclick="showMenu()" class="home-link"><i class="fa-solid fa-house"></i> Menu</button>
@@ -442,11 +409,11 @@
         <div class="term-content">
             <div id="term-en" class="term-en"></div>
             <div id="term-def" class="term-def"></div>
-            
+
             <button id="btn-reveal" onclick="revealTranslation()" class="reveal-btn">
-                <i class="fa-solid fa-eye"></i> Show Correct Translation
+                <i class="fa-solid fa-eye"></i> Show Russian Translation
             </button>
-            
+
             <div id="term-ru-container" class="translation-box hidden">
                 <div class="translation-label">Russian Translation:</div>
                 <div id="term-ru" class="term-ru"></div>
@@ -463,23 +430,24 @@
         </div>
     </main>
 
-    <!-- MODULE 2: QUIZ -->
-    <main id="quiz-container" class="glass-panel hidden">
+    <!-- MODE 2: TIMED MATCHING -->
+    <main id="match-container" class="glass-panel hidden">
         <div class="top-bar">
-            <h2 style="color: var(--accent-green);"><i class="fa-solid fa-user-secret"></i> Case Analysis</h2>
+            <h2 style="color: var(--accent-green);"><i class="fa-solid fa-stopwatch"></i> Term &amp; Definition Match</h2>
             <div class="top-bar-right">
-                <span id="quiz-score" class="progress-badge" style="color: var(--accent-green); border-color: var(--accent-green);">Score: 0</span>
-                <span id="quiz-progress" class="progress-badge">1/20</span>
+                <span id="match-score" class="progress-badge" style="color: var(--accent-green); border-color: var(--accent-green);">Score: 0</span>
+                <span id="match-timer" class="progress-badge timer-badge">01:00</span>
+                <span id="match-progress" class="progress-badge">1/16</span>
                 <button onclick="showMenu()" class="home-link"><i class="fa-solid fa-house"></i> Menu</button>
             </div>
         </div>
 
         <div class="quiz-question-box">
-            <div class="quiz-label"><i class="fa-solid fa-file-lines"></i> Incident Report:</div>
-            <div id="quiz-question" class="quiz-question"></div>
+            <div class="quiz-label"><i class="fa-solid fa-file-lines"></i> Definition:</div>
+            <div id="match-question" class="quiz-question"></div>
         </div>
 
-        <div id="quiz-options" class="quiz-options">
+        <div id="match-options" class="quiz-options">
             <!-- Options generated by JS -->
         </div>
     </main>
@@ -488,12 +456,12 @@
     <main id="results-container" class="glass-panel hidden">
         <div class="results-content">
             <i class="fa-solid fa-trophy results-icon"></i>
-            <h2 style="font-size: var(--fs-h1); margin-bottom: var(--space-xs);">Quiz Completed!</h2>
-            <p style="font-size: var(--fs-btn); color: var(--text-muted);">Here is your performance report.</p>
-            
+            <h2 style="font-size: var(--fs-h1); margin-bottom: var(--space-xs);">Time Is Up!</h2>
+            <p style="font-size: var(--fs-btn); color: var(--text-muted);">Here is your terminology report.</p>
+
             <div class="score-box">
                 <div style="font-size: var(--fs-small); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Final Score</div>
-                <div id="res-score" class="score-number">0/20</div>
+                <div id="res-score" class="score-number">0</div>
             </div>
 
             <div style="width: 100%; background: rgba(15,23,42,0.8); border-radius: 6px; height: 8px; margin-bottom: 4px; overflow: hidden;">
@@ -509,78 +477,64 @@
 
     <script>
         /* =========================================
-           DATA FROM TEACHER'S FILES (EXACT MATCH)
+           DATA: 16 CYBERCRIME TERMS
            ========================================= */
-
-        // File 1: Terminology
         const termsData = [
-            { en: "a denial-of-service attack (a DoS attack)", ru: "DoS-атака (сетевая атака)", def: "is a cyber attack carried out with one Internet-connected device and aimed to disrupt legitimate users’ access to a target network or web resource." },
-            { en: "a distributed denial-of-service attack (a DDoS attack)", ru: "DDoS-атака (распределенная сетевая атака)", def: "is a cyber attack carried out with networks of Internet-connected machines and aimed to disrupt legitimate users’ access to a target network or web resource." },
-            { en: "a malware attack", ru: "хакерская атака", def: "is a cyber-attack where malicious software, commonly known as malware, is used to gain unauthorized access to a computer system or network." },
-            { en: "a social engineering attack", ru: "атака с помощью социальной инженерии", def: "is a type of cyber attack that uses psychological manipulation and lies to trick people into giving up sensitive information or doing things that could compromise security." },
-            { en: "spoofing", ru: "спуфинг (от англ. spoof – подменять, имитировать)", def: "is the creation and use of fake messages, emails, sites, etc." },
-            { en: "phishing", ru: "фишинг («выуживание»)", def: "is a type of social engineering attack and a scam that targets the users by sending fake messages, emails, and links to get sensitive information about them." },
-            { en: "vishing (=voice phishing)", ru: "вишинг (голосовой фишинг)", def: "is the use of fraudulent phone calls to trick victims into providing personal information (login credentials, credit card numbers, or bank details)." },
-            { en: "identity theft", ru: "хищение персональных данных", def: "is stealing somebody’s personal details (login credentials, bank account numbers, etc.)." },
-            { en: "identity fraud", ru: "мошенничество с использованием похищенных персональных данных", def: "is the use of stolen personal details (login credentials, bank account numbers, etc.) to commit fraud." },
-            { en: "cyber extortion", ru: "кибервымогательство, кибершантаж", def: "is the demand for money by cybercriminals to give back some important data they’ve stolen or stop doing malicious activities such as DDoS attacks." },
-            { en: "copyright infringement", ru: "нарушение авторских прав", def: "is the unauthorized use, reproduction, distribution, or adaptation of material protected by copyright law, violating the owner's exclusive rights." },
-            { en: "cryptojacking", ru: "криптоджекинг (майнинг криптовалют с использованием чужих ресурсов)", def: "is the act of exploiting a computer to mine cryptocurrencies, often through websites, against the user's will or while the user is unaware." },
-            { en: "cyber stalking", ru: "киберпреследование, кибердомогательство", def: "is the use of the Internet, social media, or other electronic technologies to repeatedly threaten or intimidate an individual." },
-            { en: "swatting", ru: "сваттинг (от английской аббревиатуры SWAT), заведомо ложное сообщение об опасности", def: "is the action of making hoax phone calls to report serious crimes to police or emergency services." },
-            { en: "cyber espionage", ru: "кибершпионаж", def: "is the unlawful access to government or company data." },
-            { en: "cyber terrorism", ru: "кибертерроризм", def: "is an act of terrorism committed by the use of cyberspace or computers." }
-        ];
-
-        // File 2: Cases
-        const casesData = [
-            { case: "1. A user receives an email with a link asking to enter a bank password.", answer: "phishing" },
-            { case: "2. A computer stops working after downloading a file from an unknown website.", answer: "a malware attack" },
-            { case: "3. A hoax phone call asks a user to give bank account details.", answer: "vishing" },
-            { case: "4. A hacker demands money to unlock important files.", answer: "cyber extortion" },
-            { case: "5. A website does not work because of many fake requests.", answer: "a DDoS attack" },
-            { case: "6. A user receives a fake message from a bank asking to confirm details.", answer: "phishing" },
-            { case: "7. A user clicks a link and is sent to a fake website.", answer: "phishing" },
-            { case: "8. An employee opens an infected email, and the company network is damaged.", answer: "a malware attack" },
-            { case: "9. A user receives threatening messages online from an unknown person.", answer: "cyber stalking" },
-            { case: "10. A fake emergency call leads police to send a SWAT team.", answer: "swatting" },
-            { case: "11. A hacker enters a company system without permission and steals the important information.", answer: "cyber espionage" },
-            { case: "12. A user’s computer is used to mine cryptocurrency without permission.", answer: "cryptojacking" },
-            { case: "13. A user receives a fake link in social media messages.", answer: "phishing" },
-            { case: "14. A criminal uses stolen data to buy things online.", answer: "identity fraud" },
-            { case: "15. A hacker blocks access to a company system and demands money.", answer: "cyber extortion" },
-            { case: "16. An unknown person gains an unauthorized access to a girl’s smart home devices to spy on her.", answer: "cyber stalking" },
-            { case: "17. Hackers use DDoS attacks against computer systems and networks of the state bodies to pressure the government and cause some ideological, political, or social changes.", answer: "cyber terrorism" },
-            { case: "18. An unauthorized person gains access to another person’s financial information.", answer: "identity theft" },
-            { case: "19. An unknown person reports a fake bomb threat at the university.", answer: "swatting" },
-            { case: "20. Scammers use AI to clone the voice of a relative in distress to urgently request money.", answer: "vishing" }
-        ];
-
-        // Clean list of terms for quiz buttons
-        const cleanTermsList = [
-            "a DoS attack", "a DDoS attack", "a malware attack", "a social engineering attack", 
-            "spoofing", "phishing", "vishing", "identity theft", "identity fraud", 
-            "cyber extortion", "copyright infringement", "cryptojacking", "cyber stalking", 
-            "swatting", "cyber espionage", "cyber terrorism"
+            { en: "a denial-of-service attack (a DoS attack)", short: "a DoS attack", ru: "DoS-атака (сетевая атака)", def: "is a cyber attack carried out with one Internet-connected device and aimed to disrupt legitimate users’ access to a target network or web resource." },
+            { en: "a distributed denial-of-service attack (a DDoS attack)", short: "a DDoS attack", ru: "DDoS-атака (распределённая сетевая атака)", def: "is a cyber attack carried out with networks of Internet-connected machines and aimed to disrupt legitimate users’ access to a target network or web resource." },
+            { en: "a malware attack", short: "a malware attack", ru: "хакерская атака с использованием вредоносного ПО", def: "is a cyber attack where malicious software, commonly known as malware, is used to gain unauthorized access to a computer system or network." },
+            { en: "a social engineering attack", short: "a social engineering attack", ru: "атака с помощью социальной инженерии", def: "is a type of cyber attack that uses psychological manipulation and lies to trick people into giving up sensitive information or doing things that could compromise security." },
+            { en: "spoofing", short: "spoofing", ru: "спуфинг (от англ. spoof – подменять, имитировать)", def: "is the creation and use of fake messages, emails, sites, etc." },
+            { en: "phishing", short: "phishing", ru: "фишинг («выуживание»)", def: "is a type of social engineering attack and a scam that targets users by sending fake messages, emails, and links to get sensitive information about them." },
+            { en: "vishing (= voice phishing)", short: "vishing", ru: "вишинг (голосовой фишинг)", def: "is the use of fraudulent phone calls to trick victims into providing personal information (login credentials, credit card numbers, or bank details)." },
+            { en: "identity theft", short: "identity theft", ru: "хищение персональных данных", def: "is stealing somebody’s personal details (login credentials, bank account numbers, etc.)." },
+            { en: "identity fraud", short: "identity fraud", ru: "мошенничество с использованием похищенных персональных данных", def: "is the use of stolen personal details (login credentials, bank account numbers, etc.) to commit fraud." },
+            { en: "cyber extortion", short: "cyber extortion", ru: "кибервымогательство, кибершантаж", def: "is the demand for money by cybercriminals to give back important data they have stolen or to stop malicious activities such as DDoS attacks." },
+            { en: "copyright infringement", short: "copyright infringement", ru: "нарушение авторских прав", def: "is the unauthorized use, reproduction, distribution, or adaptation of material protected by copyright law, violating the owner's exclusive rights." },
+            { en: "cryptojacking", short: "cryptojacking", ru: "криптоджекинг (майнинг криптовалют с использованием чужих ресурсов)", def: "is the act of exploiting a computer to mine cryptocurrencies, often through websites, against the user's will or while the user is unaware." },
+            { en: "cyber stalking", short: "cyber stalking", ru: "киберпреследование, кибердомогательство", def: "is the use of the Internet, social media, or other electronic technologies to repeatedly threaten or intimidate an individual." },
+            { en: "swatting", short: "swatting", ru: "сваттинг (заведомо ложное сообщение об опасности)", def: "is the action of making hoax phone calls to report serious crimes to police or emergency services." },
+            { en: "cyber espionage", short: "cyber espionage", ru: "кибершпионаж", def: "is the unlawful access to government or company data." },
+            { en: "cyber terrorism", short: "cyber terrorism", ru: "кибертерроризм", def: "is an act of terrorism committed by the use of cyberspace or computers." }
         ];
 
         /* =========================================
-           UI NAVIGATION LOGIC
+           UI NAVIGATION
            ========================================= */
         const elMenu = document.getElementById('main-menu');
         const elTerm = document.getElementById('term-container');
-        const elQuiz = document.getElementById('quiz-container');
+        const elMatch = document.getElementById('match-container');
         const elResults = document.getElementById('results-container');
 
         function showMenu() {
+            stopTimer();
             elMenu.classList.remove('hidden');
             elTerm.classList.add('hidden');
-            elQuiz.classList.add('hidden');
+            elMatch.classList.add('hidden');
             elResults.classList.add('hidden');
         }
 
         /* =========================================
-           MODULE 1: TERMINOLOGY LOGIC
+           SPEECH SYNTHESIS (BRITISH ENGLISH)
+           ========================================= */
+        function speak(text) {
+            if (!('speechSynthesis' in window)) return;
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-GB';
+            utterance.rate = 0.9;
+            const voices = window.speechSynthesis.getVoices();
+            const british = voices.find(v => v.lang === 'en-GB') || voices.find(v => v.lang.startsWith('en'));
+            if (british) utterance.voice = british;
+            window.speechSynthesis.speak(utterance);
+        }
+
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); };
+        }
+
+        /* =========================================
+           MODE 1: TERMINOLOGY STUDY
            ========================================= */
         let currentTermIndex = 0;
 
@@ -588,28 +542,32 @@
             currentTermIndex = 0;
             elMenu.classList.add('hidden');
             elTerm.classList.remove('hidden');
+            elMatch.classList.add('hidden');
+            elResults.classList.add('hidden');
             loadTerm();
         }
 
         function loadTerm() {
             const data = termsData[currentTermIndex];
-            
-            document.getElementById('term-en').innerText = data.en;
+
+            document.getElementById('term-en').innerHTML =
+                `<span>${data.en}</span>
+                 <button class="speak-btn" title="Listen to pronunciation" onclick="speak('${data.en.replace(/'/g, "\\'")}')">
+                     <i class="fa-solid fa-volume-high"></i>
+                 </button>`;
             document.getElementById('term-def').innerText = data.def;
             document.getElementById('term-ru').innerText = data.ru;
-            
-            // Reset UI state for new term
+
             const ruContainer = document.getElementById('term-ru-container');
             ruContainer.classList.add('hidden');
-            ruContainer.style.animation = 'none'; 
-            ruContainer.offsetHeight; 
-            ruContainer.style.animation = null; 
-            
+            ruContainer.style.animation = 'none';
+            ruContainer.offsetHeight;
+            ruContainer.style.animation = null;
+
             document.getElementById('btn-reveal').classList.remove('hidden');
-            
             document.getElementById('term-progress').innerText = `${currentTermIndex + 1}/${termsData.length}`;
             document.getElementById('btn-prev-term').disabled = currentTermIndex === 0;
-            
+
             const nextBtn = document.getElementById('btn-next-term');
             if (currentTermIndex === termsData.length - 1) {
                 nextBtn.innerHTML = '<i class="fa-solid fa-check"></i> Finish';
@@ -640,14 +598,20 @@
         }
 
         /* =========================================
-           MODULE 2: QUIZ LOGIC
+           MODE 2: TIMED MATCHING
            ========================================= */
-        let currentQuizIndex = 0;
-        let score = 0;
-        let quizQuestions = [];
+        const MATCH_SECONDS = 60;
+        let matchScore = 0;
+        let matchAnswered = 0;
+        let matchCorrect = 0;
+        let matchQuestions = [];
+        let matchIndex = 0;
+        let timeLeft = MATCH_SECONDS;
+        let timerInterval = null;
+        let answerLocked = false;
 
         function shuffleArray(array) {
-            let arr = [...array];
+            const arr = [...array];
             for (let i = arr.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [arr[i], arr[j]] = [arr[j], arr[i]];
@@ -655,116 +619,130 @@
             return arr;
         }
 
-        function generateQuizData() {
-            quizQuestions = shuffleArray(casesData).map(q => {
-                let correctAns = q.answer;
-                
-                let wrongAnswers = cleanTermsList.filter(t => t.toLowerCase() !== correctAns.toLowerCase());
-                wrongAnswers = shuffleArray(wrongAnswers).slice(0, 3);
-                
-                let options = shuffleArray([correctAns, ...wrongAnswers]);
-                
+        function buildMatchQuestions() {
+            return shuffleArray(termsData).map(item => {
+                const wrong = shuffleArray(termsData.filter(t => t.short !== item.short)).slice(0, 3);
                 return {
-                    question: q.case,
-                    correct: correctAns,
-                    options: options
+                    definition: item.def,
+                    correct: item.short,
+                    options: shuffleArray([item.short, ...wrong.map(t => t.short)])
                 };
             });
         }
 
-        function startQuiz() {
-            generateQuizData();
-            currentQuizIndex = 0;
-            score = 0;
-            document.getElementById('quiz-score').innerText = `Score: 0`;
+        function startMatching() {
+            matchScore = 0;
+            matchAnswered = 0;
+            matchCorrect = 0;
+            matchIndex = 0;
+            timeLeft = MATCH_SECONDS;
+            answerLocked = false;
+            matchQuestions = buildMatchQuestions();
+
             elMenu.classList.add('hidden');
-            elQuiz.classList.remove('hidden');
-            loadQuizQuestion();
+            elTerm.classList.add('hidden');
+            elResults.classList.add('hidden');
+            elMatch.classList.remove('hidden');
+
+            document.getElementById('match-score').innerText = 'Score: 0';
+            updateMatchTimer();
+            loadMatchQuestion();
+            startTimer();
         }
 
-        function loadQuizQuestion() {
-            const q = quizQuestions[currentQuizIndex];
-            document.getElementById('quiz-progress').innerText = `${currentQuizIndex + 1}/${quizQuestions.length}`;
-            
-            const cleanQuestion = q.question.replace(/^\d+\.\s*/, '');
-            document.getElementById('quiz-question').innerText = cleanQuestion;
-            
-            const optionsContainer = document.getElementById('quiz-options');
+        function startTimer() {
+            stopTimer();
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateMatchTimer();
+                if (timeLeft <= 0) {
+                    stopTimer();
+                    showResults();
+                }
+            }, 1000);
+        }
+
+        function stopTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+        }
+
+        function updateMatchTimer() {
+            const m = Math.floor(Math.max(timeLeft, 0) / 60).toString().padStart(2, '0');
+            const s = (Math.max(timeLeft, 0) % 60).toString().padStart(2, '0');
+            const timerEl = document.getElementById('match-timer');
+            timerEl.innerText = `${m}:${s}`;
+            timerEl.classList.toggle('danger', timeLeft <= 10);
+        }
+
+        function loadMatchQuestion() {
+            if (matchIndex >= matchQuestions.length) {
+                matchQuestions = buildMatchQuestions();
+                matchIndex = 0;
+            }
+
+            answerLocked = false;
+            const q = matchQuestions[matchIndex];
+            document.getElementById('match-progress').innerText = `${matchIndex + 1}/${matchQuestions.length}`;
+            document.getElementById('match-question').innerText = q.definition;
+
+            const optionsContainer = document.getElementById('match-options');
             optionsContainer.innerHTML = '';
-            
-            q.options.forEach((opt) => {
+
+            q.options.forEach(option => {
                 const btn = document.createElement('button');
-                btn.className = "option-btn";
-                btn.innerText = opt.charAt(0).toUpperCase() + opt.slice(1);
-                btn.onclick = () => checkAnswer(opt, q.correct, btn);
+                btn.className = 'option-btn';
+                btn.innerText = option.charAt(0).toUpperCase() + option.slice(1);
+                btn.onclick = () => checkMatchAnswer(option, q.correct, btn);
                 optionsContainer.appendChild(btn);
             });
         }
 
-        function checkAnswer(selected, correct, btnElement) {
-            const allButtons = document.getElementById('quiz-options').children;
-            
-            for(let btn of allButtons) { 
-                btn.disabled = true; 
-            }
+        function checkMatchAnswer(selected, correct, btnElement) {
+            if (answerLocked) return;
+            answerLocked = true;
+            matchAnswered++;
 
-            if (selected.toLowerCase() === correct.toLowerCase()) {
-                score++;
-                document.getElementById('quiz-score').innerText = `Score: ${score}`;
+            const allButtons = document.getElementById('match-options').children;
+            for (const btn of allButtons) btn.disabled = true;
+
+            if (selected === correct) {
+                matchScore++;
+                matchCorrect++;
                 btnElement.classList.add('correct');
-                
-                Swal.fire({
-                    title: 'Correct!',
-                    icon: 'success',
-                    background: '#1e293b',
-                    color: '#fff',
-                    timer: 1000,
-                    showConfirmButton: false
-                }).then(() => nextQuizQuestion());
+                document.getElementById('match-score').innerText = `Score: ${matchScore}`;
             } else {
                 btnElement.classList.add('wrong');
-                
-                for(let btn of allButtons) {
+                for (const btn of allButtons) {
                     if (btn.innerText.toLowerCase() === correct.toLowerCase()) {
                         btn.classList.add('correct');
                     }
                 }
-
-                Swal.fire({
-                    title: 'Incorrect',
-                    text: `The correct answer is: ${correct.charAt(0).toUpperCase() + correct.slice(1)}`,
-                    icon: 'error',
-                    background: '#1e293b',
-                    color: '#fff',
-                    confirmButtonColor: '#38bdf8'
-                }).then(() => nextQuizQuestion());
             }
-        }
 
-        function nextQuizQuestion() {
-            currentQuizIndex++;
-            if (currentQuizIndex < quizQuestions.length) {
-                loadQuizQuestion();
-            } else {
-                showResults();
-            }
+            setTimeout(() => {
+                matchIndex++;
+                if (timeLeft > 0) loadMatchQuestion();
+            }, 650);
         }
 
         function showResults() {
-            elQuiz.classList.add('hidden');
+            stopTimer();
+            elMatch.classList.add('hidden');
             elResults.classList.remove('hidden');
 
-            const percentage = Math.round((score / quizQuestions.length) * 100);
-            
-            document.getElementById('res-score').innerText = `${score}/${quizQuestions.length}`;
-            document.getElementById('res-percent').innerText = `${percentage}% Accuracy`;
-            
+            const percentage = matchAnswered > 0 ? Math.round((matchCorrect / matchAnswered) * 100) : 0;
+            document.getElementById('res-score').innerText = `${matchScore}`;
+            document.getElementById('res-percent').innerText = `${percentage}% Accuracy (${matchCorrect}/${matchAnswered})`;
+
             setTimeout(() => {
                 const bar = document.getElementById('res-bar');
                 bar.style.width = `${percentage}%`;
-                if(percentage >= 80) bar.style.background = "var(--accent-green)";
-                else if(percentage >= 50) bar.style.background = "#facc15"; 
-                else bar.style.background = "var(--accent-red)";
+                if (percentage >= 80) bar.style.background = 'var(--accent-green)';
+                else if (percentage >= 50) bar.style.background = '#facc15';
+                else bar.style.background = 'var(--accent-red)';
             }, 100);
         }
     </script>

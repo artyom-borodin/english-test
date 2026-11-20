@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unit 13: Combating Cybercrime</title>
+    <title>Police Reports Qualification - Combating Cybercrime</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
@@ -29,13 +29,13 @@
 </head>
 <body class="min-h-screen flex flex-col items-center py-10 px-4">
 
-    <!-- Заголовок -->
+    <!-- Header -->
     <header class="text-center mb-6">
-        <h1 class="text-4xl font-bold text-sky-400 mb-2 tracking-wider">CYBER POLICE ACADEMY</h1>
-        <p class="text-slate-400 text-lg">Unit 13: Combating Cybercrime</p>
+        <h1 class="text-4xl font-bold text-sky-400 mb-2 tracking-wider">COMBATING CYBERCRIME</h1>
+        <p class="text-slate-400 text-lg">Module 3: Police Reports Qualification</p>
     </header>
 
-    <!-- HUD (Панель жизней и таймера) -->
+    <!-- HUD (lives and timer) -->
     <div id="game-hud" class="hidden w-full max-w-2xl flex justify-between items-center mb-6 bg-slate-800/80 p-4 rounded-2xl border border-slate-600 shadow-lg">
         <div class="flex items-center gap-2">
             <span class="text-slate-400 text-sm uppercase tracking-widest">Integrity:</span>
@@ -43,43 +43,43 @@
         </div>
         <div class="flex items-center gap-2">
             <span class="text-slate-400 text-sm uppercase tracking-widest">Time:</span>
-            <span id="hud-timer" class="text-2xl font-mono font-bold text-sky-400">01:00</span>
+            <span id="hud-timer" class="text-2xl font-mono font-bold text-sky-400">05:00</span>
         </div>
     </div>
 
-    <!-- Главное меню -->
+    <!-- Main menu -->
     <div id="main-menu" class="glass-panel rounded-2xl p-8 w-full max-w-2xl text-center">
-        <h2 class="text-2xl font-semibold mb-6 text-white">Select Training Module:</h2>
+        <h2 class="text-2xl font-semibold mb-6 text-white">Select Training Mode:</h2>
         <div class="flex flex-col gap-4">
             <button onclick="startQuiz()" class="bg-sky-600 hover:bg-sky-500 text-white font-bold py-4 px-6 rounded-xl text-lg transition-colors border border-sky-400 shadow-[0_0_15px_rgba(2,132,199,0.5)]">
-                🕵️‍♂️ Module 1: Cyber Cases (60s)
+                🕵️‍♂️ Mode 1: Incident Qualification (20 cases, 5 min)
             </button>
             <button onclick="startGrammar()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-4 px-6 rounded-xl text-lg transition-colors border border-indigo-400 shadow-[0_0_15px_rgba(79,70,229,0.5)]">
-                📝 Module 2: Police Reports (90s)
+                📝 Mode 2: Police Report Builder (90s)
             </button>
         </div>
     </div>
 
-    <!-- Контейнер для Игры 1 (Викторина) -->
+    <!-- Quiz container -->
     <div id="quiz-container" class="glass-panel rounded-2xl p-8 w-full max-w-2xl hidden">
         <div class="flex justify-between items-center mb-6 border-b border-slate-600 pb-4">
-            <h2 class="text-xl font-bold text-sky-400">Case File <span id="quiz-progress">1/4</span></h2>
+            <h2 class="text-xl font-bold text-sky-400">Incident File <span id="quiz-progress">1/20</span></h2>
             <button onclick="showMenu()" class="text-slate-400 hover:text-white text-sm underline">Abort Mission</button>
         </div>
         <p id="quiz-question" class="text-xl mb-8 text-white leading-relaxed"></p>
         <div id="quiz-options" class="flex flex-col gap-3">
-            <!-- Кнопки ответов -->
+            <!-- Answer buttons -->
         </div>
     </div>
 
-    <!-- Контейнер для Игры 2 (Грамматика) -->
+    <!-- Grammar container -->
     <div id="grammar-container" class="glass-panel rounded-2xl p-8 w-full max-w-3xl hidden">
         <div class="flex justify-between items-center mb-6 border-b border-slate-600 pb-4">
             <h2 class="text-xl font-bold text-indigo-400">Report Builder <span id="grammar-progress">1/5</span></h2>
             <button onclick="showMenu()" class="text-slate-400 hover:text-white text-sm underline">Abort Mission</button>
         </div>
         <p class="text-slate-300 mb-4">Construct the sentence in Passive Voice by clicking the words in the correct order:</p>
-        
+
         <div id="constructed-sentence" class="min-h-[60px] bg-slate-800 border-2 border-dashed border-slate-500 rounded-xl p-4 mb-6 flex flex-wrap gap-2 items-center"></div>
         <div id="available-words" class="flex flex-wrap gap-3 mb-8 justify-center"></div>
 
@@ -89,17 +89,17 @@
         </div>
     </div>
 
-    <!-- ЭКРАН РЕЗУЛЬТАТОВ -->
+    <!-- Results screen -->
     <div id="results-container" class="glass-panel rounded-2xl p-8 w-full max-w-2xl hidden text-center">
         <h2 class="text-3xl font-bold text-white mb-2">Mission Completed</h2>
         <p id="res-module" class="text-slate-400 mb-6 text-lg"></p>
-        
-        <!-- Ранг -->
+
+        <!-- Rank -->
         <div class="mb-8 bg-slate-800/50 py-4 rounded-xl border border-slate-600">
             <p class="text-slate-400 text-sm uppercase tracking-widest mb-1">Your Rank</p>
             <p id="res-rank" class="text-4xl font-bold"></p>
         </div>
-        
+
         <div class="flex justify-center gap-8 mb-8">
             <div class="bg-slate-800 p-6 rounded-xl border border-slate-600 w-1/3">
                 <p class="text-slate-400 text-sm uppercase tracking-wider mb-1">Score</p>
@@ -129,12 +129,37 @@
     </div>
 
     <script>
-        // --- ДАННЫЕ ---
-        const quizData = [
-            { question: "A criminal locks a user's files and demands Bitcoin to unlock them. What type of attack is this?", options: ["Ransomware", "Phishing", "Swatting", "Cyber espionage"], correct: 0 },
-            { question: "Criminals use a network of infected IoT devices (botnet) to crash a website by overwhelming it with traffic.", options: ["Vishing", "Identity fraud", "DDoS attack", "Cryptojacking"], correct: 2 },
-            { question: "An employee receives a fake email from the 'CEO' asking to click a link and enter passwords.", options: ["Malware", "Spear-phishing", "Cyber terrorism", "Spoofing"], correct: 1 },
-            { question: "A criminal calls the victim on the phone pretending to be from a bank to steal credit card details.", options: ["Swatting", "Cyber extortion", "DDoS attack", "Vishing"], correct: 3 }
+        /* =========================================
+           DATA
+           ========================================= */
+        const casesData = [
+            { case: "A user receives an email with a link asking to enter a bank password.", answer: "phishing" },
+            { case: "A computer stops working after downloading a file from an unknown website.", answer: "a malware attack" },
+            { case: "A hoax phone call asks a user to give bank account details.", answer: "vishing" },
+            { case: "A hacker demands money to unlock important files.", answer: "cyber extortion" },
+            { case: "A website does not work because of many fake requests.", answer: "a DDoS attack" },
+            { case: "A user receives a fake message from a bank asking to confirm details.", answer: "phishing" },
+            { case: "A user clicks a link and is sent to a fake website.", answer: "phishing" },
+            { case: "An employee opens an infected email, and the company network is damaged.", answer: "a malware attack" },
+            { case: "A user receives threatening messages online from an unknown person.", answer: "cyber stalking" },
+            { case: "A fake emergency call leads police to send a SWAT team.", answer: "swatting" },
+            { case: "A hacker enters a company system without permission and steals important information.", answer: "cyber espionage" },
+            { case: "A user’s computer is used to mine cryptocurrency without permission.", answer: "cryptojacking" },
+            { case: "A user receives a fake link in social media messages.", answer: "phishing" },
+            { case: "A criminal uses stolen data to buy things online.", answer: "identity fraud" },
+            { case: "A hacker blocks access to a company system and demands money.", answer: "cyber extortion" },
+            { case: "An unknown person gains unauthorized access to a girl’s smart home devices to spy on her.", answer: "cyber stalking" },
+            { case: "Hackers use DDoS attacks against computer systems and networks of state bodies to pressure the government and cause ideological, political, or social changes.", answer: "cyber terrorism" },
+            { case: "An unauthorized person gains access to another person’s financial information.", answer: "identity theft" },
+            { case: "An unknown person reports a fake bomb threat at the university.", answer: "swatting" },
+            { case: "Scammers use AI to clone the voice of a relative in distress to urgently request money.", answer: "vishing" }
+        ];
+
+        const cleanTermsList = [
+            "a DoS attack", "a DDoS attack", "a malware attack", "a social engineering attack",
+            "spoofing", "phishing", "vishing", "identity theft", "identity fraud",
+            "cyber extortion", "copyright infringement", "cryptojacking", "cyber stalking",
+            "swatting", "cyber espionage", "cyber terrorism"
         ];
 
         const grammarData = [
@@ -145,17 +170,21 @@
             { correct: "Penalties are imposed on convicts according to the law.", words: ["are", "imposed", "Penalties", "convicts", "on", "law.", "according", "to", "the"] }
         ];
 
-        // --- ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ---
+        /* =========================================
+           GLOBAL STATE
+           ========================================= */
+        let quizData = [];
         let correctAnswers = 0;
         let incorrectAnswers = 0;
         let currentModuleName = '';
-        
-        // Игровые механики
+
         let lives = 3;
         let timeLeft = 0;
         let timerInterval;
 
-        // --- ЛОГИКА ИНТЕРФЕЙСА ---
+        /* =========================================
+           UI NAVIGATION
+           ========================================= */
         const elMenu = document.getElementById('main-menu');
         const elQuiz = document.getElementById('quiz-container');
         const elGrammar = document.getElementById('grammar-container');
@@ -171,13 +200,24 @@
             elHud.classList.add('hidden');
         }
 
-        // --- ИГРОВЫЕ МЕХАНИКИ (ТАЙМЕР И ЖИЗНИ) ---
+        function shuffleArray(array) {
+            const arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        /* =========================================
+           GAME MECHANICS (TIMER AND LIVES)
+           ========================================= */
         function startGameMechanics(seconds) {
             lives = 3;
             timeLeft = seconds;
             elHud.classList.remove('hidden');
             updateHUD();
-            
+
             clearInterval(timerInterval);
             timerInterval = setInterval(() => {
                 timeLeft--;
@@ -189,7 +229,6 @@
         }
 
         function updateHUD() {
-            // Обновление таймера
             const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
             const s = (timeLeft % 60).toString().padStart(2, '0');
             const timerEl = document.getElementById('hud-timer');
@@ -203,9 +242,8 @@
                 timerEl.classList.add('text-sky-400');
             }
 
-            // Обновление жизней
             let shields = '';
-            for(let i=0; i<3; i++) {
+            for (let i = 0; i < 3; i++) {
                 shields += i < lives ? '🛡️' : '❌';
             }
             document.getElementById('hud-lives').innerText = shields;
@@ -213,9 +251,9 @@
 
         function triggerGameOver(reason) {
             clearInterval(timerInterval);
-            let title = reason === 'time' ? "Time's Up!" : "Mission Failed!";
-            let text = reason === 'time' ? "The hackers escaped." : "System integrity compromised.";
-            
+            const title = reason === 'time' ? "Time's Up!" : "Mission Failed!";
+            const text = reason === 'time' ? "The incident reports were not processed in time." : "System integrity compromised.";
+
             Swal.fire({
                 title: title,
                 text: text,
@@ -229,7 +267,9 @@
             });
         }
 
-        // --- ЭКРАН РЕЗУЛЬТАТОВ ---
+        /* =========================================
+           RESULTS SCREEN
+           ========================================= */
         function showResults(totalQuestions) {
             clearInterval(timerInterval);
             elHud.classList.add('hidden');
@@ -239,7 +279,6 @@
 
             const percentage = Math.round((correctAnswers / totalQuestions) * 100);
 
-            // Определение ранга
             let rank = "";
             let rankColor = "";
             if (percentage === 100) { rank = "Cyber Ninja 🥷"; rankColor = "text-purple-400"; }
@@ -255,27 +294,44 @@
             document.getElementById('res-correct').innerText = correctAnswers;
             document.getElementById('res-incorrect').innerText = incorrectAnswers;
             document.getElementById('res-percent').innerText = `${percentage}%`;
-            
+
             setTimeout(() => {
                 const bar = document.getElementById('res-bar');
                 bar.style.width = `${percentage}%`;
-                if(percentage >= 80) bar.className = "bg-emerald-500 h-4 rounded-full transition-all duration-1000";
-                else if(percentage >= 50) bar.className = "bg-yellow-500 h-4 rounded-full transition-all duration-1000";
+                if (percentage >= 80) bar.className = "bg-emerald-500 h-4 rounded-full transition-all duration-1000";
+                else if (percentage >= 50) bar.className = "bg-yellow-500 h-4 rounded-full transition-all duration-1000";
                 else bar.className = "bg-red-500 h-4 rounded-full transition-all duration-1000";
             }, 100);
         }
 
-        // --- ЛОГИКА ВИКТОРИНЫ (QUIZ) ---
+        /* =========================================
+           MODE 1: INCIDENT QUALIFICATION
+           ========================================= */
         let currentQuizIndex = 0;
 
+        function buildQuizData() {
+            return shuffleArray(casesData).map(item => {
+                const wrong = shuffleArray(cleanTermsList.filter(t => t.toLowerCase() !== item.answer.toLowerCase())).slice(0, 3);
+                const options = shuffleArray([item.answer, ...wrong]);
+                return {
+                    question: item.case,
+                    options: options,
+                    correct: options.indexOf(item.answer)
+                };
+            });
+        }
+
         function startQuiz() {
+            quizData = buildQuizData();
             currentQuizIndex = 0;
             correctAnswers = 0;
             incorrectAnswers = 0;
-            currentModuleName = 'Module 1: Cyber Cases';
+            currentModuleName = 'Mode 1: Incident Qualification';
             elMenu.classList.add('hidden');
             elQuiz.classList.remove('hidden');
-            startGameMechanics(60); // 60 секунд на викторину
+            elGrammar.classList.add('hidden');
+            elResults.classList.add('hidden');
+            startGameMechanics(300); // 5 minutes for 20 cases
             loadQuizQuestion();
         }
 
@@ -283,14 +339,14 @@
             const q = quizData[currentQuizIndex];
             document.getElementById('quiz-progress').innerText = `${currentQuizIndex + 1}/${quizData.length}`;
             document.getElementById('quiz-question').innerText = q.question;
-            
+
             const optionsContainer = document.getElementById('quiz-options');
             optionsContainer.innerHTML = '';
-            
+
             q.options.forEach((opt, index) => {
                 const btn = document.createElement('button');
                 btn.className = "bg-slate-700 hover:bg-sky-600 text-left text-white py-3 px-5 rounded-lg transition-colors border border-slate-600 hover:border-sky-400 text-lg";
-                btn.innerText = opt;
+                btn.innerText = opt.charAt(0).toUpperCase() + opt.slice(1);
                 btn.onclick = () => checkQuizAnswer(index, btn);
                 optionsContainer.appendChild(btn);
             });
@@ -299,30 +355,30 @@
         function checkQuizAnswer(selectedIndex, btnElement) {
             const correctIndex = quizData[currentQuizIndex].correct;
             const allButtons = document.getElementById('quiz-options').children;
-            
-            for(let btn of allButtons) { btn.disabled = true; }
+
+            for (let btn of allButtons) { btn.disabled = true; }
 
             if (selectedIndex === correctIndex) {
                 correctAnswers++;
                 btnElement.classList.replace('bg-slate-700', 'bg-emerald-600');
                 btnElement.classList.replace('hover:bg-sky-600', 'bg-emerald-600');
-                
+
                 Swal.fire({
                     title: 'Correct!',
                     icon: 'success',
                     background: '#1e293b',
                     color: '#fff',
-                    timer: 1000,
+                    timer: 900,
                     showConfirmButton: false
                 }).then(() => nextQuizQuestion());
             } else {
                 incorrectAnswers++;
                 lives--;
                 updateHUD();
-                
+
                 btnElement.classList.replace('bg-slate-700', 'bg-red-600');
                 allButtons[correctIndex].classList.replace('bg-slate-700', 'bg-emerald-600');
-                
+
                 if (lives <= 0) {
                     setTimeout(() => triggerGameOver('lives'), 500);
                 } else {
@@ -331,7 +387,7 @@
                         icon: 'error',
                         background: '#1e293b',
                         color: '#fff',
-                        timer: 1500,
+                        timer: 1300,
                         showConfirmButton: false
                     }).then(() => nextQuizQuestion());
                 }
@@ -347,7 +403,9 @@
             }
         }
 
-        // --- ЛОГИКА ГРАММАТИКИ (GRAMMAR) ---
+        /* =========================================
+           MODE 2: POLICE REPORT BUILDER
+           ========================================= */
         let currentGrammarIndex = 0;
         let selectedWords = [];
         let availableWords = [];
@@ -356,10 +414,12 @@
             currentGrammarIndex = 0;
             correctAnswers = 0;
             incorrectAnswers = 0;
-            currentModuleName = 'Module 2: Police Reports';
+            currentModuleName = 'Mode 2: Police Report Builder';
             elMenu.classList.add('hidden');
             elGrammar.classList.remove('hidden');
-            startGameMechanics(90); // 90 секунд на грамматику
+            elQuiz.classList.add('hidden');
+            elResults.classList.add('hidden');
+            startGameMechanics(90);
             loadGrammarSentence();
         }
 
@@ -373,7 +433,7 @@
         function renderGrammarUI() {
             const constContainer = document.getElementById('constructed-sentence');
             const availContainer = document.getElementById('available-words');
-            
+
             constContainer.innerHTML = '';
             availContainer.innerHTML = '';
 
@@ -423,7 +483,7 @@
                     icon: 'success',
                     background: '#1e293b',
                     color: '#fff',
-                    timer: 1200,
+                    timer: 1100,
                     showConfirmButton: false
                 }).then(() => nextGrammarSentence());
             } else {

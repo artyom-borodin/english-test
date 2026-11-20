@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connect Four - Cybercrime</title>
+    <title>Connect Five - Combating Cybercrime</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -115,7 +115,7 @@
         
         <div class="flex flex-col items-center lg:items-start space-y-8">
             <div>
-                <h1 class="text-7xl font-black tracking-tighter text-gray-200 leading-none">CONNECT<br>FOUR</h1>
+                <h1 class="text-7xl font-black tracking-tighter text-gray-200 leading-none">CONNECT<br>FIVE</h1>
                 <p class="text-lg tracking-widest text-gray-400 mt-2 uppercase">Combating Cybercrime</p>
             </div>
 
@@ -689,7 +689,7 @@
 
         function checkWin() {
             const size = 5;
-            const winLength = 4;
+            const winLength = 5;
 
             const getColor = (x, y) => {
                 if (x < 0 || x >= size || y < 0 || y >= size) return null;
@@ -701,10 +701,10 @@
                     const color = getColor(x, y);
                     if (!color || color === 'disabled') continue;
 
-                    if (x <= size - winLength && color === getColor(x+1, y) && color === getColor(x+2, y) && color === getColor(x+3, y)) return declareWinner(color);
-                    if (y <= size - winLength && color === getColor(x, y+1) && color === getColor(x, y+2) && color === getColor(x, y+3)) return declareWinner(color);
-                    if (x <= size - winLength && y <= size - winLength && color === getColor(x+1, y+1) && color === getColor(x+2, y+2) && color === getColor(x+3, y+3)) return declareWinner(color);
-                    if (x >= winLength - 1 && y <= size - winLength && color === getColor(x-1, y+1) && color === getColor(x-2, y+2) && color === getColor(x-3, y+3)) return declareWinner(color);
+                    if (x <= size - winLength && color === getColor(x+1, y) && color === getColor(x+2, y) && color === getColor(x+3, y) && color === getColor(x+4, y)) return declareWinner(color);
+                    if (y <= size - winLength && color === getColor(x, y+1) && color === getColor(x, y+2) && color === getColor(x, y+3) && color === getColor(x, y+4)) return declareWinner(color);
+                    if (x <= size - winLength && y <= size - winLength && color === getColor(x+1, y+1) && color === getColor(x+2, y+2) && color === getColor(x+3, y+3) && color === getColor(x+4, y+4)) return declareWinner(color);
+                    if (x >= winLength - 1 && y <= size - winLength && color === getColor(x-1, y+1) && color === getColor(x-2, y+2) && color === getColor(x-3, y+3) && color === getColor(x-4, y+4)) return declareWinner(color);
                 }
             }
             return false;
